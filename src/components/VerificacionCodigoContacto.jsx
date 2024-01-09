@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import marcofinal from '../resources/marcoextenso.png';
-import { Link } from 'react-router-dom';My Workspace
+import { Link } from 'react-router-dom';
 
 
 const VerificacionCodigoContacto = () => {
