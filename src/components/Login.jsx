@@ -4,10 +4,9 @@ import axios from 'axios';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { FaSpinner } from 'react-icons/fa'; // Asegúrate de importar un icono de carga o utiliza tu propio componente de loader
+import { FaSpinner } from 'react-icons/fa';
 
 import Footer from './footer';
-
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -17,25 +16,25 @@ function Login() {
   const [contrasenia, setContrasenia] = useState("");
   const [mostrarContrasenia, setMostrarContrasenia] = useState(false);
   const [error, setError] = useState(false);
-  const [alertMessage, setAlertMessage] = useState(""); // Nuevo estado para el mensaje del alert
+  const [alertMessage, setAlertMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!correo.trim()) {
-      setAlertMessage('Porfavor, digite un correo electrónico');
+      setAlertMessage('Por favor, digite un correo electrónico');
       setTimeout(() => setAlertMessage(null), 5000);
       return;
     } else if (!contrasenia.trim()) {
-      setAlertMessage('Porfavor, digite una contraseña');
+      setAlertMessage('Por favor, digite una contraseña');
       setTimeout(() => setAlertMessage(null), 5000);
       return;
     }
 
     try {
-      setLoading(true); // Habilita el loader al hacer clic en el botón
+      setLoading(true);
 
-      const response = await axios.post('http://189.138.113.161:8080/api/user/login', {
+      const response = await axios.post('https://189.138.113.161:8080/api/user/login', {
         email: correo,
         password: contrasenia,
       });
@@ -44,23 +43,19 @@ function Login() {
         setAlertMessage('Tu contraseña es incorrecta. Inténtalo nuevamente o recupérala.');
         setTimeout(() => setAlertMessage(null), 5000);
       } else if (response.data === 'Tu cuenta no está verificada') {
-        setAlertMessage('Tu cuenta no está verificada, porfavor, intenta recuperarla.');
+        setAlertMessage('Tu cuenta no está verificada, por favor, intenta recuperarla.');
         setTimeout(() => setAlertMessage(null), 5000);
       } else {
         navigate('/dashboard');
-
         localStorage.setItem('correo', correo);
-     
-
-        window.location.reload();   
+        window.location.reload();
       };
 
     } catch (error) {
-      // Actualiza el estado para mostrar el mensaje de error en el alert
-      setAlertMessage("Las credenciales no coinciden con ningún usuario previamente registrado, Verifique los datos o regístrese");
+      setAlertMessage("Las credenciales no coinciden con ningún usuario previamente registrado. Verifique los datos o regístrese");
       setTimeout(() => setAlertMessage(null), 10000);
     } finally {
-      setLoading(false); // Restablece el estado de carga después de manejar la respuesta
+      setLoading(false);
     }
   };
 
