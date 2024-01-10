@@ -3,6 +3,7 @@ import CardOxigenacion from "./CardOxigenacion";
 import CardPulsoCardiaco from "./CardPulsoCardiaco";
 import CardTemperatura from "./CardTemperatura";
 import CardInfoInfante from "./CardInfoInfante";
+import CardInfoContacto from "./CardInfoContacto";
 import Header from './Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLungs } from '@fortawesome/free-solid-svg-icons';
@@ -35,8 +36,8 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-3 col-xl-2 bg-success">
-                    {/* Contenido para la tercera columna */}
+                <div className="col-md-3 col-xl-2">
+                    <CardInfoContacto />
                 </div>
                 <div className="col-xl-3 bg-dark">
                     {/* Contenido para la cuarta columna */}

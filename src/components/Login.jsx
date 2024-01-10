@@ -35,7 +35,7 @@ function Login() {
     try {
       setLoading(true); // Habilita el loader al hacer clic en el botón
 
-      const response = await axios.post('http://ixchelms2024.ddns.net:8080/api/user/login', {
+      const response = await axios.post('http://ixchelmxms.ddns.net:8080/api/user/login', {
         email: correo,
         password: contrasenia,
       });
